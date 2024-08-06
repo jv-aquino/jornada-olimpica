@@ -1,0 +1,45 @@
+.Carousel__buttonContainer {
+  position: relative;
+  width: 100%;
+  height: 30%;
+}
+.Carousel__container {
+  position: relative;
+  overflow: hidden;
+  margin: auto;
+  width: 70%;
+}
+.Carousel {
+  display: flex;
+  transition: transform 0.55s ease;
+}
+
+.Carousel__card {
+  width: 100%;
+  height: 100%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border: 2px solid black;
+}
+.Carousel__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.Carousel__navButton {
+  border: 1px solid;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  @apply border-gray-950
+}
+.Carousel__navButton.inactive {
+  @apply border-neutral-600 text-zinc-600;
+}
+
+.Carousel__dot {
+  border-radius: 50%;
+  box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.3);
+}

@@ -13,3 +13,102 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
+model CT {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  nome       String
+  endereco   String
+}
+
+model Pais {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  nome       String
+  sigla      String  @unique
+
+  atletas Atleta[]
+}
+
+model Atleta {
+  id            String  @id @default(auto()) @map("_id") @db.ObjectId
+  nome          String
+  paisId        String  @db.ObjectId
+  modalidadeId  String  @db.ObjectId
+
+  modalidade  Modalidade  @relation(fields: [modalidadeId], references: [id])
+  pais        Pais  @relation(fields: [paisId], references: [id])
+  times       TimeAtleta[]
+}
+
+model TimeAtleta {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  atletaId   String  @db.ObjectId
+  timeId     String  @db.ObjectId
+  reserva    Boolean?
+
+  atleta   Atleta   @relation(fields: [atletaId], references: [id])
+  time     Time   @relation(fields: [timeId], references: [id])
+}
+
+model Time {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  nome       String
+  tipo       String
+
+  atletas    TimeAtleta[]
+}
+
+
+model Esporte {
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  nome         String
+
+  modalidades  Modalidade[]
+}
+model Modalidade {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  nome       String
+  esporteId String  @db.ObjectId
+
+  esporte  Esporte   @relation(fields: [esporteId], references: [id])
+  atletas Atleta[]
+}
+
+model Jogo {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  local      String
+
+  plataforma JogoAssistir[]
+}
+
+model JogoAssistir {
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  plataformaId String  @db.ObjectId
+  jogoId       String  @db.ObjectId
+
+  plataforma  PlataformaAssistir   @relation(fields: [plataformaId], references: [id])
+  jogo        Jogo   @relation(fields: [jogoId], references: [id])
+}
+
+model PlataformaAssistir {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  nome       String
+  logo       String
+  baseLink   String
+
+  jogo       JogoAssistir[]
+}
+
+model Campeonato {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  nome       String
+  tipo       String
+  fases      Fase[]
+}
+model Fase {
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  tipo         String
+  nome         String
+  campeonatoId String  @db.ObjectId
+
+  campeonato   Campeonato @relation(fields: [campeonatoId], references: [id])
+}

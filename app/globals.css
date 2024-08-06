@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply text-white font-mont;
+}
+
+.baseHover {
+  transition: color .5s ease-out;
+}
+.baseHover:hover {
+  @apply text-primary-500
+}

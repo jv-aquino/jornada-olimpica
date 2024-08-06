@@ -1,0 +1,35 @@
+.Navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 40px;
+  
+  @apply bg-black text-white;
+}
+
+.Navbar__navItem {
+  position: relative;
+  transition: color 0.45s ease-out;
+
+}
+.Navbar__navItem:hover, .Navbar__navItem.active {
+  @apply text-primary-500;
+}
+
+.Navbar__navItem::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px; 
+
+  height: 2px; 
+  width: 0;
+
+  transition: width 0.4s ease;
+
+  @apply bg-primary-500
+}
+
+.Navbar__navItem:not(.active):hover::after {
+  width: 100%;
+}
