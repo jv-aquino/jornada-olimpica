@@ -12,3 +12,35 @@ body {
 .baseHover:hover {
   @apply text-primary-500
 }
+
+.brasilText span {
+  animation-duration: 8s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+.brasilText span:nth-child(odd) {
+  color: #FFDF00; 
+  animation-name: yellowToGreen;
+}
+.brasilText span:nth-child(even) {
+  color: #009739; 
+  animation-name: greenToYellow;
+}
+
+@keyframes greenToYellow {
+  0%, 20%, 50%, 70% {
+    color: #009739; /* Verde */
+  }
+  30%, 60%, 80% {
+    color: #FFDF00; /* Amarelo */
+  }
+}
+
+@keyframes yellowToGreen {
+  0%, 30%, 60%, 70% {
+    color: #FFDF00; /* Amarelo */
+  }
+  20%, 50%, 80% {
+    color: #009739; /* Verde */
+  }
+}

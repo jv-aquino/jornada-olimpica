@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Merriweather } from "next/font/google";
+import { Montserrat, Merriweather, Anton } from "next/font/google";
 import "./globals.css";
 
 import Navbar from "@/components/Navbar/Navbar";
@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 const montserrat = Montserrat({ subsets: ["latin"], variable: '--font-mont' });
+const anton = Anton({ subsets: ["latin"], weight: ['400'], variable: '--font-anton' });
 const merriweather = Merriweather({ subsets: ["latin"], weight: ['300', '400', '700'], variable: '--font-merri' });
 
 export default function RootLayout({
@@ -20,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={`${montserrat.variable} ${merriweather.variable}`}>
+      <body className={`${montserrat.variable} ${merriweather.variable} ${anton.variable}`}>
         <Navbar />
         {children}
         <Footer />

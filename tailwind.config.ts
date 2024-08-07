@@ -9,7 +9,8 @@ const config: Config = {
     extend: {
       fontFamily: {
         'merri': ['var(--font-merri)'],
-        'mont': ['var(--font-mont)']
+        'mont': ['var(--font-mont)'],
+        'anton': ['var(--font-anton)'],
       },
       colors: {
         "white": "#f7f5f2",
