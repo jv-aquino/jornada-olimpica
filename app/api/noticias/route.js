@@ -8,6 +8,7 @@ export async function GET(req, { params }) {
       { header: 'volei de praia', src: '', alt: ''},
       { header: 'noticia chocante', src: '', alt: ''},
     ]
+    return NextResponse.json(mockNoticias);
   } catch (error) {
     console.log('[NOTICIAS_GET]', error);
     return new NextResponse("Internal error", { status: 500 });

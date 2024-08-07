@@ -46,7 +46,7 @@ function Carousel({
     return () => {
       window.removeEventListener('resize', handleChange);
     };
-  }, []);
+  }, [handleChange]);
 
   const prevImage = () => {
     if ((imgIndex - increment) <= -1 && !cycle) { return setImg(0) }
